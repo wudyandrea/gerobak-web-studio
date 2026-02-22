@@ -14,7 +14,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center pt-16 overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center pt-16 overflow-hidden px-4">
       {/* Gradient mesh bg */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-primary/10 blur-[120px]" />

@@ -7,9 +7,9 @@ const packages = [
     id: "minimal",
     name: "Mini Web",
     badge: null,
-    originalPrice: "500rb",
-    price: "250rb",
-    description: "Cocok untuk PKL dan UMKM yang mau tampilkan menu, link, atau kontak usaha.",
+    originalPrice: "250rb",
+    price: "100rb",
+    description: "Cocok untuk Pedagang kaki lima dan UMKM yang mau tampilkan menu, link, atau kontak usaha.",
     icon: Store,
     features: ["1 halaman landing", "Tampilkan menu / link bio", "Nomor WA & lokasi Maps", "Mobile friendly", "Revisi 1x"],
     highlight: false,
@@ -18,11 +18,11 @@ const packages = [
     id: "starter",
     name: "Starter",
     badge: "Populer",
-    originalPrice: "700rb",
+    originalPrice: "500rb",
     price: "300rb",
     description: "Mulai tampil di era digital. Cocok untuk UMKM yang baru mau go online.",
     icon: Rocket,
-    features: ["Hingga 3 halaman", "Home, About, Contact", "WhatsApp button", "Google Maps embed", "Mobile friendly", "Revisi 2x"],
+    features: ["Hingga 2 halaman", "Home, About", "WhatsApp button", "Google Maps embed", "Mobile friendly", "Revisi 1x"],
     highlight: true,
   },
   {
@@ -33,7 +33,7 @@ const packages = [
     price: "500rb",
     description: "Landing page atau company profile yang lebih lengkap untuk usaha tingkat menengah.",
     icon: Building2,
-    features: ["Hingga 5 halaman", "Desain lebih custom", "Form kontak", "WhatsApp & Maps integration", "Mobile friendly", "Revisi 3x"],
+    features: ["Hingga 4 halaman", "Desain lebih custom", "Form kontak", "WhatsApp & Maps integration", "Mobile friendly", "Revisi 2x"],
     highlight: false,
   },
   {
@@ -57,7 +57,7 @@ const PricingSection = () => {
   };
 
   return (
-    <section id="pricing" className="py-20 lg:py-28">
+    <section id="pricing" className="px-4 py-20 lg:py-28">
       <div className="section-container" ref={ref}>
         <div className="text-center max-w-2xl mx-auto mb-14">
           <h2 className="text-3xl sm:text-4xl font-bold font-heading text-foreground mb-4">
@@ -94,7 +94,7 @@ const PricingSection = () => {
 
               <div className="mb-5">
                 {pkg.originalPrice && (
-                  <span className="text-sm text-muted-foreground line-through mr-2">Rp {pkg.originalPrice}</span>
+                  <span className="text-sm text-red-500 text-muted-foreground line-through mr-2">Rp {pkg.originalPrice}</span>
                 )}
                 <span className="text-2xl font-bold font-heading text-foreground">
                   {pkg.price.startsWith("Hubungi") ? pkg.price : `Rp ${pkg.price}`}

@@ -33,7 +33,7 @@ const CountdownBanner = () => {
   ];
 
   return (
-    <section className="gradient-primary py-6">
+    <section className="px-4 gradient-primary py-6">
       <div className="section-container text-center">
         <p className="text-primary-foreground font-semibold text-lg mb-3">
           ⚡ Promo Harga Perdana Berakhir Dalam:

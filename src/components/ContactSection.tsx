@@ -30,7 +30,7 @@ const ContactSection = () => {
   const inputClass = "w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-shadow";
 
   return (
-    <section id="contact" className="py-20 lg:py-28">
+    <section id="contact" className="px-4 py-20 lg:py-28">
       <div className="section-container" ref={ref}>
         <div className="text-center max-w-2xl mx-auto mb-14">
           <h2 className="text-3xl sm:text-4xl font-bold font-heading text-foreground mb-4">

@@ -16,7 +16,7 @@ const FAQSection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="faq" className="py-20 lg:py-28 bg-muted/50">
+    <section id="faq" className="px-4 py-20 lg:py-28 bg-muted/50">
       <div className="section-container max-w-3xl" ref={ref}>
         <div className="text-center mb-14">
           <h2 className="text-3xl sm:text-4xl font-bold font-heading text-foreground mb-4">

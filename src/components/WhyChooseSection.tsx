@@ -14,7 +14,7 @@ const WhyChooseSection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="why_choose" className="py-20 lg:py-28">
+    <section id="why_choose" className="px-4 py-20 lg:py-28">
       <div className="section-container" ref={ref}>
         <div className="text-center max-w-2xl mx-auto mb-14">
           <h2 className="text-3xl sm:text-4xl font-bold font-heading text-foreground mb-4">
@@ -32,10 +32,12 @@ const WhyChooseSection = () => {
               className="card-hover group rounded-xl border border-border bg-card p-6"
               style={{ transitionDelay: `${i * 80}ms` }}
             >
-              <div className="w-12 h-12 rounded-lg gradient-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <div className="flex items-center mb-3">
+                <div className="w-9 h-9 rounded-lg gradient-primary flex items-center justify-center group-hover:scale-110 transition-transform">
                 <f.icon size={22} className="text-primary-foreground" />
+                </div>
+                <h3 className="font-heading font-semibold text-lg text-card-foreground ml-2">{f.title}</h3>
               </div>
-              <h3 className="font-heading font-semibold text-lg text-card-foreground mb-2">{f.title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">{f.description}</p>
             </div>
           ))}
