@@ -39,7 +39,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`fixed px-4 top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "glass-effect shadow-sm" : "bg-transparent"}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "glass-effect shadow-sm" : "bg-transparent"}`}>
       <div className="section-container flex items-center justify-between h-16">
         <button onClick={() => scrollTo("#hero")} className="flex items-center gap-2 font-heading font-bold text-xl">
           <Truck className="text-secondary" size={28} />
@@ -81,7 +81,7 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden glass-effect border-t border-border/50 animate-fade-up">
+        <div className="px-4 md:hidden glass-effect border-t border-border/50 fade h-screen">
           <div className="section-container py-4 flex flex-col gap-3">
             {navLinks.map((link) => (
               <button
