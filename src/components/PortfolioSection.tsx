@@ -9,6 +9,9 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import portfolioBlog from "@/assets/portfolio-blog.png";
+import portfolioFidih from "@/assets/portfolio-fidih.png";
+import portfolioOpenSlot from "@/assets/portfolio-open-slot.png";
 
 interface CardData {
   title: string;
@@ -17,6 +20,7 @@ interface CardData {
   status: "coming_soon" | "open" | "live";
   previewDescription: string;
   url?: string;
+  thumbnail: string;
 }
 
 const cards: CardData[] = [
@@ -28,6 +32,7 @@ const cards: CardData[] = [
     previewDescription:
       "Blog pribadi Fidi Hartato yang membahas topik seputar teknologi, coding, dan pengembangan web. Dibangun dengan desain yang bersih dan mudah dinavigasi.",
     url: "https://blog.fidihartato.my.id",
+    thumbnail: portfolioBlog,
   },
   {
     title: "Portfolio Fidi Hartato",
@@ -37,6 +42,7 @@ const cards: CardData[] = [
     previewDescription:
       "Website portfolio personal yang menampilkan project dan skill seorang developer. Di-host di GitHub Pages dengan performa cepat dan ringan.",
     url: "https://fidih.github.io/",
+    thumbnail: portfolioFidih,
   },
   {
     title: "Slot Terbuka",
@@ -45,6 +51,7 @@ const cards: CardData[] = [
     status: "open",
     previewDescription:
       "Slot ini terbuka untuk kamu! Jadilah salah satu klien pertama GerobakWeb dan dapatkan harga promo spesial.",
+    thumbnail: portfolioOpenSlot,
   },
 ];
 
@@ -89,16 +96,24 @@ const PortfolioSection = () => {
               }`}
               style={{ transitionDelay: `${i * 100}ms` }}
             >
-              {card.status === "open" && (
-                <div className="flex items-center gap-1.5 text-primary text-sm font-semibold mb-3">
-                  <Sparkles size={16} /> Tersedia
-                </div>
-              )}
-              {card.status === "live" && (
-                <div className="flex items-center gap-1.5 text-green-500 text-sm font-semibold mb-3">
-                  <ExternalLink size={16} /> Live
-                </div>
-              )}
+              <div className="relative -mx-6 -mt-6 mb-4 overflow-hidden rounded-t-xl">
+                <img
+                  src={card.thumbnail}
+                  alt={card.title}
+                  className="w-full h-40 object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+                {card.status === "live" && (
+                  <span className="absolute top-2 right-2 flex items-center gap-1 text-xs font-semibold px-2 py-1 rounded-full bg-green-500 text-white">
+                    <ExternalLink size={12} /> Live
+                  </span>
+                )}
+                {card.status === "open" && (
+                  <span className="absolute top-2 right-2 flex items-center gap-1 text-xs font-semibold px-2 py-1 rounded-full bg-primary text-primary-foreground">
+                    <Sparkles size={12} /> Tersedia
+                  </span>
+                )}
+              </div>
               <h3 className="font-heading font-semibold text-lg text-card-foreground mb-2">
                 {card.title}
               </h3>
