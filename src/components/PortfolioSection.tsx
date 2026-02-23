@@ -1,6 +1,8 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Sparkles, Eye, ExternalLink, Clock } from "lucide-react";
 import { useState } from "react";
+import portfolioBlog from "@/assets/portfolio-blog.jpg";
+import portfolioFidih from "@/assets/portfolio-fidih.jpg";
 import {
   Dialog,
   DialogContent,
@@ -17,6 +19,7 @@ interface CardData {
   status: "coming_soon" | "open" | "live";
   previewDescription: string;
   url?: string;
+  thumbnail?: string;
 }
 
 const cards: CardData[] = [
@@ -28,6 +31,7 @@ const cards: CardData[] = [
     previewDescription:
       "Blog pribadi Fidi Hartato yang membahas topik seputar teknologi, coding, dan pengembangan web. Dibangun dengan desain yang bersih dan mudah dinavigasi.",
     url: "https://blog.fidihartato.my.id",
+    thumbnail: portfolioBlog,
   },
   {
     title: "Portfolio Fidi Hartato",
@@ -37,6 +41,7 @@ const cards: CardData[] = [
     previewDescription:
       "Website portfolio personal yang menampilkan project dan skill seorang developer. Di-host di GitHub Pages dengan performa cepat dan ringan.",
     url: "https://fidih.github.io/",
+    thumbnail: portfolioFidih,
   },
   {
     title: "Slot Terbuka",
@@ -89,6 +94,16 @@ const PortfolioSection = () => {
               }`}
               style={{ transitionDelay: `${i * 100}ms` }}
             >
+              {card.thumbnail && (
+                <div className="mb-4 -mx-6 -mt-6 overflow-hidden rounded-t-xl">
+                  <img
+                    src={card.thumbnail}
+                    alt={`Preview ${card.title}`}
+                    className="w-full h-36 object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                </div>
+              )}
               {card.status === "open" && (
                 <div className="flex items-center gap-1.5 text-primary text-sm font-semibold mb-3">
                   <Sparkles size={16} /> Tersedia

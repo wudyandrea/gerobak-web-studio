@@ -16,7 +16,9 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [dark, setDark] = useState(() => {
     if (typeof window !== "undefined") {
-      return localStorage.getItem("theme") === "dark";
+      const saved = localStorage.getItem("theme");
+      if (saved) return saved === "dark";
+      return window.matchMedia("(prefers-color-scheme: dark)").matches;
     }
     return false;
   });
