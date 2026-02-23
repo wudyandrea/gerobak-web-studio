@@ -14,26 +14,29 @@ interface CardData {
   title: string;
   description: string;
   tags: string[];
-  status: "coming_soon" | "open";
+  status: "coming_soon" | "open" | "live";
   previewDescription: string;
+  url?: string;
 }
 
 const cards: CardData[] = [
   {
-    title: "Coming Soon",
-    description: "Project pertama sedang dalam pengerjaan",
-    tags: ["Landing Page", "UMKM"],
-    status: "coming_soon",
+    title: "Blog Fidi Hartato",
+    description: "Blog pribadi dengan konten teknologi dan pengembangan web",
+    tags: ["Blog", "Personal"],
+    status: "live",
     previewDescription:
-      "Project landing page untuk UMKM sedang dalam tahap pengerjaan. Nantikan hasilnya segera di sini!",
+      "Blog pribadi Fidi Hartato yang membahas topik seputar teknologi, coding, dan pengembangan web. Dibangun dengan desain yang bersih dan mudah dinavigasi.",
+    url: "https://blog.fidihartato.my.id",
   },
   {
-    title: "Coming Soon",
-    description: "Slot portfolio tersedia",
-    tags: ["Company Profile"],
-    status: "coming_soon",
+    title: "Portfolio Fidi Hartato",
+    description: "Website portfolio personal developer",
+    tags: ["Portfolio", "GitHub Pages"],
+    status: "live",
     previewDescription:
-      "Slot company profile ini masih tersedia. Bisa jadi project kamu yang tampil di sini!",
+      "Website portfolio personal yang menampilkan project dan skill seorang developer. Di-host di GitHub Pages dengan performa cepat dan ringan.",
+    url: "https://fidih.github.io/",
   },
   {
     title: "Slot Terbuka",
@@ -80,6 +83,8 @@ const PortfolioSection = () => {
               className={`rounded-xl p-6 transition-all duration-300 cursor-pointer group ${
                 card.status === "open"
                   ? "border-2 border-primary bg-primary/5 shadow-lg shadow-primary/10 hover:shadow-xl hover:shadow-primary/20 hover:-translate-y-1"
+                  : card.status === "live"
+                  ? "border-2 border-green-500/30 bg-card shadow-md hover:shadow-lg hover:border-green-500/50 hover:-translate-y-1"
                   : "border-2 border-dashed border-border bg-card hover:border-primary/40 hover:shadow-md hover:-translate-y-1"
               }`}
               style={{ transitionDelay: `${i * 100}ms` }}
@@ -87,6 +92,11 @@ const PortfolioSection = () => {
               {card.status === "open" && (
                 <div className="flex items-center gap-1.5 text-primary text-sm font-semibold mb-3">
                   <Sparkles size={16} /> Tersedia
+                </div>
+              )}
+              {card.status === "live" && (
+                <div className="flex items-center gap-1.5 text-green-500 text-sm font-semibold mb-3">
+                  <ExternalLink size={16} /> Live
                 </div>
               )}
               <h3 className="font-heading font-semibold text-lg text-card-foreground mb-2">
@@ -124,7 +134,9 @@ const PortfolioSection = () => {
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
             <DialogTitle className="font-heading flex items-center gap-2">
-              {selectedCard?.status === "open" ? (
+              {selectedCard?.status === "live" ? (
+                <ExternalLink size={20} className="text-green-500" />
+              ) : selectedCard?.status === "open" ? (
                 <Sparkles size={20} className="text-primary" />
               ) : (
                 <Clock size={20} className="text-muted-foreground" />
@@ -147,7 +159,21 @@ const PortfolioSection = () => {
             ))}
           </div>
 
-          {selectedCard?.status === "open" ? (
+          {selectedCard?.status === "live" && selectedCard?.url ? (
+            <div className="mt-4 p-4 rounded-lg bg-green-500/5 border border-green-500/20">
+              <p className="text-sm text-foreground font-medium mb-3">
+                🌐 Project ini sudah live!
+              </p>
+              <Button
+                variant="gradient"
+                className="w-full"
+                onClick={() => window.open(selectedCard.url, "_blank")}
+              >
+                <ExternalLink size={16} />
+                Lihat Website
+              </Button>
+            </div>
+          ) : selectedCard?.status === "open" ? (
             <div className="mt-4 p-4 rounded-lg bg-primary/5 border border-primary/20">
               <p className="text-sm text-foreground font-medium mb-3">
                 🎯 Slot ini tersedia untuk kamu!
